@@ -25,4 +25,24 @@ void print_triangle(int leftCol, int size)
     putchar('\n');
   }
 }
+void print_arrow(int leftCol, int size) {
+    // Printing the arrowhead
+    for (int row = 0; row < size; row++) { 
+        int minCol = leftCol + size - row - 1;
+        int maxCol = leftCol + size + row;
+        int col;
+        for (col = 0; col < minCol; col++) putchar(' ');
+        for ( ; col <= maxCol; col++) putchar('*');
+        putchar('\n');
+    }
 
+    // Arrow shaft (a vertical rectangle below the arrowhead)
+    int shaftWidth = size / 2; 
+    int shaftHeight = size; 
+
+    for (int row = 0; row < shaftHeight; row++) {
+        for (int col = 0; col < leftCol + size - shaftWidth / 2 - 1; col++) putchar(' ');
+        for (int col = 0; col < shaftWidth; col++) putchar('*');
+        putchar('\n');
+    }
+}
